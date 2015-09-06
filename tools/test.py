@@ -1393,6 +1393,7 @@ BUILT_IN_TESTS = [
   'addons',
   'gc',
   'debugger',
+  'workers'
 ]
 
 
