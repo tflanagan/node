@@ -87,7 +87,6 @@ namespace node {
   V(exit_code_string, "exitCode")                                             \
   V(exit_string, "exit")                                                      \
   V(expire_string, "expire")                                                  \
-  V(experimental_workers_string, "experimental_workers")                      \
   V(exponent_string, "exponent")                                              \
   V(exports_string, "exports")                                                \
   V(ext_key_usage_string, "ext_key_usage")                                    \

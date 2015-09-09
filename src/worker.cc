@@ -229,8 +229,6 @@ void WorkerContext::Initialize(Handle<Object> target,
                         Handle<Value> unused,
                         Handle<Context> context) {
   Environment* env = Environment::GetCurrent(context);
-  if (!node::experimental_workers)
-    return env->ThrowError("Experimental workers are not enabled");
 
   Local<FunctionTemplate> t = env->NewFunctionTemplate(WorkerContext::New);
   t->InstanceTemplate()->SetInternalFieldCount(1);

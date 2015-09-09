@@ -181,7 +181,6 @@ inline MUST_USE_RESULT bool ParseArrayIndex(v8::Local<v8::Value> arg,
   return true;
 }
 
-extern bool experimental_workers;
 extern v8::Platform* default_platform;
 uv_thread_t* main_thread();
 size_t GenerateThreadId();

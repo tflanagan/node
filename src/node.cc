@@ -143,7 +143,6 @@ static const char* icu_data_dir = nullptr;
 
 // used by C++ modules as well
 bool no_deprecation = false;
-bool experimental_workers = false;
 v8::Platform* default_platform = nullptr;
 
 // process-relative uptime base, initialized at start-up
@@ -2547,9 +2546,6 @@ static Local<Object> GetFeatures(Environment* env) {
            Boolean::New(env->isolate(),
                         get_builtin_module("crypto") != nullptr));
 
-  obj->Set(env->experimental_workers_string(),
-           Boolean::New(env->isolate(), experimental_workers));
-
   return scope.Escape(obj);
 }
 
@@ -3279,9 +3275,6 @@ static void ParseArgs(int* argc,
     } else if (strcmp(arg, "--expose-internals") == 0 ||
                strcmp(arg, "--expose_internals") == 0) {
       // consumed in js
-    } else if (strcmp(arg, "--experimental-workers") == 0 ||
-               strcmp(arg, "--experimental_workers") == 0) {
-      experimental_workers = true;
     } else {
       // V8 option.  Pass through as-is.
       new_v8_argv[new_v8_argc] = arg;

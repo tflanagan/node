@@ -1,4 +1,4 @@
-// Flags: --experimental-workers --max-semi-space-size=1 --max-old-space-size=16
+// Flags: --max-semi-space-size=1 --max-old-space-size=16
 'use strict';
 
 // Just something to run with valgrind, not real test

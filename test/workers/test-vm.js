@@ -1,4 +1,3 @@
-// Flags: --experimental-workers --harmony_proxies
 'use strict';
 
 var assert = require('assert');

@@ -1,4 +1,3 @@
-// Flags: --experimental-workers
 'use strict';
 
 // Uncaught exceptions inside worker bubble to the parent thread's worker
