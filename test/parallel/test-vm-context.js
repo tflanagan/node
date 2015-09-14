@@ -60,3 +60,23 @@ var ctx = {};
 Object.defineProperty(ctx, 'b', { configurable: false });
 ctx = vm.createContext(ctx);
 assert.equal(script.runInContext(ctx), false);
+
+// Issue GH-2860
+// Error on the first line of a module should
+// have the correct line and column number
+var err;
+
+try {
+  vm.runInContext('throw new Error()', context, {
+    filename: 'expected-filename.js',
+    lineOffset: 32,
+    columnOffset: 123
+  });
+} catch (e) {
+  err = e;
+
+  assert.ok(/expected-filename.js:33:130/.test(err.stack),
+            'Expected appearance of proper offset in Error stack');
+}
+
+assert.ok(err, 'expected exception from runInContext offset test');

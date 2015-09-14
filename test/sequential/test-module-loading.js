@@ -283,3 +283,19 @@ process.on('exit', function() {
 // #1440 Loading files with a byte order marker.
 assert.equal(42, require('../fixtures/utf8-bom.js'));
 assert.equal(42, require('../fixtures/utf8-bom.json'));
+
+// Issue GH-2860
+// Error on the first line of a module should
+// have the correct line and column number
+var err;
+
+try {
+  require('../fixtures/test-error-first-line-offset.js');
+} catch (e) {
+  err = e;
+
+  assert.ok(/test-error-first-line-offset.js:1:1/.test(err.stack),
+            'Expected appearance of proper offset in Error stack');
+}
+
+assert.ok(err, 'expected exception from runInContext offset test');
